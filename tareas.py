@@ -2,12 +2,15 @@ from datetime import date
 import json
 
 class Tarea:
+    """Representa una tarea con estado y fecha opcional."""
+
     def __init__(self, titulo, estado=False, fecha_limite=None):
         self.titulo = titulo
         self.estado = estado
         self.fecha_limite = fecha_limite
 
     def __str__(self):
+        """Devuelve una representación legible de la tarea."""
         simbolo = "✅" if self.estado else "❎"
 
         if self.fecha_limite:
@@ -17,21 +20,24 @@ class Tarea:
             return f"{simbolo} {self.titulo}"
 
     def marcar_completada(self):
+        """Marca la tarea como completada."""
         self.estado = True
 
 class GestorTareas:
+    """Gestiona tareas y su almacenamiento en JSON."""
+
     def __init__(self):
         self.tareas = []
         self.cargar_tareas()
 
     def agregar_tarea(self, titulo, fecha_limite=None):
-        """Agregar una tarea a la lista de tareas."""
+        """Agrega una nueva tarea."""
         tarea = Tarea(titulo, False, fecha_limite)
         self.tareas.append(tarea)
         self.guardar_tareas()
 
     def listar_tareas(self):
-        """Mostrar lista de tareas enumerada"""
+        """Muestra todas las tareas."""
         if not self.tareas:
             print("No hay tareas registradas")
             return
@@ -40,6 +46,7 @@ class GestorTareas:
             print(f"{i}. {tarea}")
 
     def completar_tarea(self, numero):
+        """Marca la tarea completada."""
         try:
             indice = numero - 1
             self.tareas[indice].marcar_completada()
@@ -51,6 +58,7 @@ class GestorTareas:
 
 
     def eliminar_tarea(self, numero):
+        """Elimina la tarea."""
         try:
             indice = numero - 1
             tarea_eliminada = self.tareas.pop(indice)
@@ -62,6 +70,7 @@ class GestorTareas:
 
 
     def guardar_tareas(self):
+        """Guarda las tareas en un archivo JSON."""
         datos = []
 
         for tarea in self.tareas:
@@ -76,6 +85,7 @@ class GestorTareas:
 
 
     def cargar_tareas(self):
+        """Carga las tareas desde un archivo JSON."""
         try:
             with open("tareas.json", "r") as archivo:
                 datos = json.load(archivo)
