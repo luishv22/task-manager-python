@@ -1,3 +1,5 @@
+# Proyecto en aprendizaje de Git - practicando commits
+
 from datetime import date
 from tareas import GestorTareas
 
