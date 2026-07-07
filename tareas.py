@@ -1,3 +1,4 @@
+# TODO: Implementar sistema de prioridades (alta, media, baja) para las tareas
 from datetime import date
 import json
 
