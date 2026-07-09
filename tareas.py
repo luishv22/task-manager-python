@@ -26,7 +26,6 @@ class Tarea:
 
 class GestorTareas:
     """Gestiona tareas y su almacenamiento en JSON."""
-
     def __init__(self):
         self.tareas = []
         self.cargar_tareas()
