@@ -1,4 +1,4 @@
-# Proyecto en aprendizaje de Git - practicando commits
+# Version desde la rama feature - conflicto de prueba
 
 from datetime import date
 from tareas import GestorTareas
